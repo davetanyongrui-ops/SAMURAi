@@ -84,6 +84,19 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px #ff4500;
         }
+        .hero-logo-img {
+            width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+            border: 3px solid #ffd700;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        .hero-logo-img.loading {
+            opacity: 0.5;
+        }
         .hero h1 {
             font-size: 3em;
             margin-bottom: 20px;
@@ -104,11 +117,80 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
         }
         .illustration img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        .illustration img.loading {
+            opacity: 0.5;
+        }
+        .illustration::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin: -20px 0 0 -20px;
+            border: 4px solid #ffd700;
+            border-top: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .illustration.loading::before {
+            opacity: 1;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .additional-illustration {
+            max-width: 100%;
+            height: 300px;
+            background: #222;
+            border: 2px solid #ff4500;
+            border-radius: 10px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .additional-illustration img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        .additional-illustration img.loading {
+            opacity: 0.5;
+        }
+        .additional-illustration::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin: -20px 0 0 -20px;
+            border: 4px solid #ff4500;
+            border-top: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .additional-illustration.loading::before {
+            opacity: 1;
         }
         .roadmap li {
             text-align: left;
@@ -177,8 +259,12 @@
             .roles {
                 flex-direction: column;
             }
-            .illustration {
+            .illustration,
+            .additional-illustration {
                 height: 250px;
+            }
+            .hero-logo-img {
+                width: 200px;
             }
         }
     </style>
@@ -187,9 +273,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <!-- Hero logo image with loading state -->
+            <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01k64w1kq3fk1a8fqxwppzzavv%2F1758952831_img_0.webp?st=2025-09-27T04%3A47%3A58Z&se=2025-10-03T05%3A47%3A58Z&sks=b&skt=2025-09-27T04%3A47%3A58Z&ske=2025-10-03T05%3A47%3A58Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8b872fb2-b44b-4c1d-9ff6-1d4509d19e6e&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=tLrOthrBO%2BHWbjpKo1F%2BHf4zyorQI%2F7KeDhXbLlvO1E%3D&az=oaivgprodscus" alt="Samurai holding Solana sword" class="hero-logo-img loading" onload="this.classList.remove('loading')">
             <div class="logo">⚔️ SAMURAI</div>
-            <!-- Placeholder for logo image: Replace src with actual samurai holding Solana sword image -->
-            <!-- <img src="samurai-logo.png" alt="Samurai holding Solana sword" style="width: 200px; height: auto;"> -->
             <h1>We’re not just degens. We’re Samurai Degens ⚔️</h1>
             <p>Protect your bags. Fight rugpull demons. Join the Clan.</p>
             <div>
@@ -217,9 +303,9 @@
             <p>They are not just memers.</p>
             <p>They are Samurai Degens — the warriors of Web3.</p>
             <p>And their story… has only just begun. 🥷🔥</p>
-            <!-- Illustration: Samurai fighting a demon labeled “RUG” -->
-            <div class="illustration">
-                <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01k64qbbhgf9gag4s5pehr56xh%2F1758948538_img_1.webp?st=2025-09-27T03%3A14%3A22Z&se=2025-10-03T04%3A14%3A22Z&sks=b&skt=2025-09-27T03%3A14%3A22Z&ske=2025-10-03T04%3A14%3A22Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8b872fb2-b44b-4c1d-9ff6-1d4509d19e6e&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=05kEE1T4Fg6m%2BTqo9clk41Ap%2Bis69NQLV0267ZhlC0c%3D&az=oaivgprodscus" alt="Samurai fighting RUG demon">
+            <!-- Illustration: Samurai fighting a demon labeled “RUG” with loading state -->
+            <div class="illustration loading">
+                <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01k64qbbhgf9gag4s5pehr56xh%2F1758948538_img_1.webp?st=2025-09-27T03%3A14%3A22Z&se=2025-10-03T04%3A14%3A22Z&sks=b&skt=2025-09-27T03%3A14%3A22Z&ske=2025-10-03T04%3A14%3A22Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8b872fb2-b44b-4c1d-9ff6-1d4509d19e6e&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=05kEE1T4Fg6m%2BTqo9clk41Ap%2Bis69NQLV0267ZhlC0c%3D&az=oaivgprodscus" alt="Samurai fighting RUG demon" onload="this.parentElement.classList.remove('loading'); this.classList.remove('loading')">
             </div>
         </div>
     </section>
@@ -242,6 +328,10 @@
     <section id="roadmap">
         <div class="container">
             <h2>Samurai Path (Roadmap)</h2>
+            <!-- Roadmap illustration with loading state -->
+            <div class="additional-illustration loading">
+                <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01k64xgt3neb891edx819venk8%2F1758954378_img_1.webp?st=2025-09-27T04%3A47%3A58Z&se=2025-10-03T05%3A47%3A58Z&sks=b&skt=2025-09-27T04%3A47%3A58Z&ske=2025-10-03T05%3A47%3A58Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8b872fb2-b44b-4c1d-9ff6-1d4509d19e6e&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=Kuqoem4djhF4lVisnsvoWUJ7qO4V83kP73%2FspC5JOS8%3D&az=oaivgprodscus" alt="Samurai Path Illustration" onload="this.parentElement.classList.remove('loading'); this.classList.remove('loading')" onerror="this.parentElement.classList.remove('loading'); this.parentElement.innerHTML='<p style=\'color: #ffd700; padding: 20px; font-size: 1.2em;\'>⚔️ Samurai Path Illustration</p>';">
+            </div>
             <ul class="roadmap">
                 <li><strong>Phase 1: The Dojo</strong> → Launch on Pump.fun, gather Clan members.</li>
                 <li><strong>Phase 2: The Battlefield</strong> → Migrate to Raydium, build liquidity.</li>
@@ -255,6 +345,10 @@
     <section id="community">
         <div class="container">
             <h2>Become Part of the Samurai Clan</h2>
+            <!-- Community illustration updated with new provided image for Become Part of the Samurai Clan -->
+            <div class="additional-illustration loading">
+                <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01k64xnfc6f4n86tahaamrq60m%2F1758954528_img_0.webp?st=2025-09-27T04%3A47%3A58Z&se=2025-10-03T05%3A47%3A58Z&sks=b&skt=2025-09-27T04%3A47%3A58Z&ske=2025-10-03T05%3A47%3A58Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8b872fb2-b44b-4c1d-9ff6-1d4509d19e6e&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=1NtYfQr0fmrtQfIPP8ACw8ey1qbLXc%2F6LgLJ%2FZppT0s%3D&az=oaivgprodscus" alt="Become Part of the Samurai Clan Illustration" onload="this.parentElement.classList.remove('loading'); this.classList.remove('loading')" onerror="this.parentElement.classList.remove('loading'); this.parentElement.innerHTML='<p style=\'color: #ffd700; padding: 20px; font-size: 1.2em;\'>🥷 Become Part of the Samurai Clan</p>';">
+            </div>
             <div class="roles">
                 <div class="role">
                     <h3>🥷 Ninjas</h3>
@@ -271,21 +365,4 @@
             </div>
             <div class="social-buttons">
                 <a href="https://t.me/+NRtgxaF8sZE2ZTFk" class="social-btn" target="_blank">Telegram</a>
-                <a href="https://x.com/CRYPTO936034" class="social-btn" target="_blank">X</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="container">
-            <p class="disclaimer">$SAMURAI is a meme coin with no intrinsic value. Trade wisely, protect your bags, and fight for glory.</p>
-            <div class="footer-links">
-                <a href="https://t.me/+NRtgxaF8sZE2ZTFk" target="_blank">Telegram</a>
-                <a href="https://x.com/CRYPTO936034" target="_blank">X</a>
-                <a href="https://pump.fun/samurai" target="_blank">Pump.fun</a>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+                <a href="https://x.com/CRYPTO936034" class="social-btn"
